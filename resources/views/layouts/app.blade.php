@@ -33,7 +33,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">明星<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">小说</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">搞笑</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">视频</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
