@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2019-05-17 12:59:28
+-- 生成日期： 2019-05-18 09:18:02
 -- 服务器版本： 5.7.22-0ubuntu18.04.1
 -- PHP 版本： 7.2.5-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -46,14 +46,17 @@ CREATE TABLE `admin_menu` (
 
 INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `permission`, `created_at`, `updated_at`) VALUES
 (1, 0, 1, '首页', 'fa-bar-chart', '/', NULL, NULL, '2019-05-17 20:20:05'),
-(2, 0, 3, '系统管理', 'fa-tasks', NULL, NULL, NULL, '2019-05-17 20:26:08'),
-(3, 2, 4, '管理员', 'fa-users', 'auth/users', NULL, NULL, '2019-05-17 20:26:08'),
-(4, 2, 5, '角色', 'fa-user', 'auth/roles', NULL, NULL, '2019-05-17 20:26:08'),
-(5, 2, 6, '权限', 'fa-ban', 'auth/permissions', NULL, NULL, '2019-05-17 20:26:08'),
-(6, 2, 7, '菜单', 'fa-bars', 'auth/menu', NULL, NULL, '2019-05-17 20:26:08'),
-(7, 2, 8, '操作日志', 'fa-history', 'auth/logs', NULL, NULL, '2019-05-17 20:26:08'),
+(2, 0, 5, '系统管理', 'fa-tasks', NULL, NULL, NULL, '2019-05-18 17:01:20'),
+(3, 2, 6, '管理员', 'fa-users', 'auth/users', NULL, NULL, '2019-05-18 17:01:20'),
+(4, 2, 7, '角色', 'fa-user', 'auth/roles', NULL, NULL, '2019-05-18 17:01:20'),
+(5, 2, 8, '权限', 'fa-ban', 'auth/permissions', NULL, NULL, '2019-05-18 17:01:20'),
+(6, 2, 9, '菜单', 'fa-bars', 'auth/menu', NULL, NULL, '2019-05-18 17:01:20'),
+(7, 2, 10, '操作日志', 'fa-history', 'auth/logs', NULL, NULL, '2019-05-18 17:01:20'),
 (8, 0, 2, '用户管理', 'fa-user-plus', NULL, NULL, '2019-05-17 20:25:52', '2019-05-17 20:27:21'),
-(9, 8, 0, '用户列表', 'fa-user', '/users', NULL, '2019-05-17 20:26:44', '2019-05-17 20:27:35');
+(9, 8, 3, '用户列表', 'fa-user', '/users', NULL, '2019-05-17 20:26:44', '2019-05-18 17:01:20'),
+(10, 0, 4, '资讯管理', 'fa-bars', NULL, NULL, '2019-05-18 17:01:13', '2019-05-18 17:01:20'),
+(11, 10, 0, '资讯列表', 'fa-bars', '/articles', NULL, '2019-05-18 17:01:43', '2019-05-18 17:01:43'),
+(12, 10, 0, '类型列表', 'fa-bars', '/category', NULL, '2019-05-18 17:02:27', '2019-05-18 17:02:27');
 
 -- --------------------------------------------------------
 
@@ -121,7 +124,29 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (42, 1, 'admin/users', 'GET', '192.168.10.1', '[]', '2019-05-17 20:36:00', '2019-05-17 20:36:00'),
 (43, 1, 'admin/users', 'GET', '192.168.10.1', '[]', '2019-05-17 20:37:19', '2019-05-17 20:37:19'),
 (44, 1, 'admin/users', 'GET', '192.168.10.1', '[]', '2019-05-17 20:38:07', '2019-05-17 20:38:07'),
-(45, 1, 'admin/users', 'GET', '192.168.10.1', '[]', '2019-05-17 20:54:57', '2019-05-17 20:54:57');
+(45, 1, 'admin/users', 'GET', '192.168.10.1', '[]', '2019-05-17 20:54:57', '2019-05-17 20:54:57'),
+(46, 1, 'admin', 'GET', '192.168.10.1', '[]', '2019-05-18 14:21:12', '2019-05-18 14:21:12'),
+(47, 1, 'admin/users', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2019-05-18 14:21:19', '2019-05-18 14:21:19'),
+(48, 1, 'admin/auth/logout', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2019-05-18 14:21:31', '2019-05-18 14:21:31'),
+(49, 1, 'admin', 'GET', '192.168.10.1', '[]', '2019-05-18 16:54:47', '2019-05-18 16:54:47'),
+(50, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2019-05-18 17:00:53', '2019-05-18 17:00:53'),
+(51, 1, 'admin/auth/menu', 'POST', '192.168.10.1', '{\"parent_id\":\"0\",\"title\":\"\\u8d44\\u8baf\\u7ba1\\u7406\",\"icon\":\"fa-bars\",\"uri\":null,\"roles\":[null],\"permission\":null,\"_token\":\"nH5bwWVWholldz9GNAWefFpgMPIPxaRq0w6YhSPb\"}', '2019-05-18 17:01:13', '2019-05-18 17:01:13'),
+(52, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '[]', '2019-05-18 17:01:14', '2019-05-18 17:01:14'),
+(53, 1, 'admin/auth/menu', 'POST', '192.168.10.1', '{\"_token\":\"nH5bwWVWholldz9GNAWefFpgMPIPxaRq0w6YhSPb\",\"_order\":\"[{\\\"id\\\":1},{\\\"id\\\":8,\\\"children\\\":[{\\\"id\\\":9}]},{\\\"id\\\":10},{\\\"id\\\":2,\\\"children\\\":[{\\\"id\\\":3},{\\\"id\\\":4},{\\\"id\\\":5},{\\\"id\\\":6},{\\\"id\\\":7}]}]\"}', '2019-05-18 17:01:20', '2019-05-18 17:01:20'),
+(54, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2019-05-18 17:01:20', '2019-05-18 17:01:20'),
+(55, 1, 'admin/auth/menu', 'POST', '192.168.10.1', '{\"parent_id\":\"10\",\"title\":\"\\u8d44\\u8baf\\u5217\\u8868\",\"icon\":\"fa-bars\",\"uri\":\"\\/articles\",\"roles\":[null],\"permission\":null,\"_token\":\"nH5bwWVWholldz9GNAWefFpgMPIPxaRq0w6YhSPb\"}', '2019-05-18 17:01:43', '2019-05-18 17:01:43'),
+(56, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '[]', '2019-05-18 17:01:44', '2019-05-18 17:01:44'),
+(57, 1, 'admin/auth/menu', 'POST', '192.168.10.1', '{\"parent_id\":\"10\",\"title\":\"\\u7c7b\\u578b\\u5217\\u8868\",\"icon\":\"fa-bars\",\"uri\":\"\\/category\",\"roles\":[null],\"permission\":null,\"_token\":\"nH5bwWVWholldz9GNAWefFpgMPIPxaRq0w6YhSPb\"}', '2019-05-18 17:02:27', '2019-05-18 17:02:27'),
+(58, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '[]', '2019-05-18 17:02:27', '2019-05-18 17:02:27'),
+(59, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '[]', '2019-05-18 17:02:32', '2019-05-18 17:02:32'),
+(60, 1, 'admin/category', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2019-05-18 17:02:43', '2019-05-18 17:02:43'),
+(61, 1, 'admin/articles', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2019-05-18 17:02:57', '2019-05-18 17:02:57'),
+(62, 1, 'admin/category', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2019-05-18 17:03:03', '2019-05-18 17:03:03'),
+(63, 1, 'admin/articles', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2019-05-18 17:03:19', '2019-05-18 17:03:19'),
+(64, 1, 'admin/articles/create', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2019-05-18 17:03:25', '2019-05-18 17:03:25'),
+(65, 1, 'admin/articles/create', 'GET', '192.168.10.1', '[]', '2019-05-18 17:03:59', '2019-05-18 17:03:59'),
+(66, 1, 'admin/articles/create', 'GET', '192.168.10.1', '[]', '2019-05-18 17:04:02', '2019-05-18 17:04:02'),
+(67, 1, 'admin/articles/create', 'GET', '192.168.10.1', '[]', '2019-05-18 17:17:36', '2019-05-18 17:17:36');
 
 -- --------------------------------------------------------
 
@@ -253,7 +278,7 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$tnl7Pk.2wZUriAIAQiD.CO/7tuyrZ0D6/01s8XHl92V3tFBNQ737m', 'Administrator', NULL, 'Ui1UyV2Ff5QlAsz0ckuKmPGUQ2WdYvaou7P7vSYAR3TCKoCkj0CcrL74yFYS', '2019-05-17 12:08:31', '2019-05-17 12:08:31');
+(1, 'admin', '$2y$10$tnl7Pk.2wZUriAIAQiD.CO/7tuyrZ0D6/01s8XHl92V3tFBNQ737m', 'Administrator', NULL, 'u0A8B5hXjTvb4JT5ck2ThnY45i0ogGsjMTjareVw5s4FpMLhpEooyFCpDMIy', '2019-05-17 12:08:31', '2019-05-17 12:08:31');
 
 -- --------------------------------------------------------
 
@@ -340,13 +365,13 @@ ALTER TABLE `admin_user_permissions`
 -- 使用表AUTO_INCREMENT `admin_menu`
 --
 ALTER TABLE `admin_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- 使用表AUTO_INCREMENT `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- 使用表AUTO_INCREMENT `admin_permissions`
