@@ -23,8 +23,8 @@ class CategoryController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('分类管理')
+            ->description('列表')
             ->body($this->grid());
     }
 
@@ -38,8 +38,8 @@ class CategoryController extends Controller
     public function show($id, Content $content)
     {
         return $content
-            ->header('Detail')
-            ->description('description')
+            ->header('分类管理')
+            ->description('详情')
             ->body($this->detail($id));
     }
 
@@ -53,8 +53,8 @@ class CategoryController extends Controller
     public function edit($id, Content $content)
     {
         return $content
-            ->header('Edit')
-            ->description('description')
+            ->header('分类管理')
+            ->description('编辑')
             ->body($this->form()->edit($id));
     }
 
@@ -67,8 +67,8 @@ class CategoryController extends Controller
     public function create(Content $content)
     {
         return $content
-            ->header('Create')
-            ->description('description')
+            ->header('分类管理')
+            ->description('新增')
             ->body($this->form());
     }
 
@@ -81,12 +81,12 @@ class CategoryController extends Controller
     {
         $grid = new Grid(new Category);
 
-        $grid->id('Id');
-        $grid->name('Name');
-        $grid->url('Url');
-        $grid->order('Order');
-        $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
+        $grid->id('序号');
+        $grid->name('名称');
+        $grid->url('URL');
+        $grid->order('排序');
+        $grid->created_at('创建时间');
+        $grid->updated_at('更新时间');
 
         return $grid;
     }
@@ -101,12 +101,11 @@ class CategoryController extends Controller
     {
         $show = new Show(Category::findOrFail($id));
 
-        $show->id('Id');
-        $show->name('Name');
-        $show->url('Url');
-        $show->order('Order');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
+        $show->name('名称');
+        $show->url('URL');
+        $show->order('排序');
+        $show->created_at('创建时间');
+        $show->updated_at('更新时间');
 
         return $show;
     }
@@ -120,9 +119,11 @@ class CategoryController extends Controller
     {
         $form = new Form(new Category);
 
-        $form->text('name', 'Name');
-        $form->url('url', 'Url');
-        $form->switch('order', 'Order');
+        $form->text('name', '名称')->rules('required',[
+            'required' => '分类必填',
+        ]);
+        $form->url('url', 'URL');
+        $form->text('order', '排序')->default(0);
 
         return $form;
     }

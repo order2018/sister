@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Models\Article;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -23,8 +24,8 @@ class ArticleController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('资讯管理')
+            ->description('列表')
             ->body($this->grid());
     }
 
@@ -81,15 +82,17 @@ class ArticleController extends Controller
     {
         $grid = new Grid(new Article);
 
-        $grid->id('Id');
-        $grid->title('Title');
-        $grid->picture('Picture');
-        $grid->body('Body');
-        $grid->order('Order');
-        $grid->is_hidden('Is hidden');
-        $grid->category_id('Category id');
-        $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
+        $grid->id('序号')->sortable();
+        $grid->title('标题');
+        $grid->order('排序');
+        $grid->category()->name('类别');
+        $grid->is_hidden('是否隐藏')->display(function ($hidden){
+            if ($hidden=='K')
+                return '开启';
+            return '隐藏';
+        });
+        $grid->created_at('创建时间');
+        $grid->updated_at('更新时间');
 
         return $grid;
     }
@@ -104,15 +107,14 @@ class ArticleController extends Controller
     {
         $show = new Show(Article::findOrFail($id));
 
-        $show->id('Id');
-        $show->title('Title');
-        $show->picture('Picture');
-        $show->body('Body');
-        $show->order('Order');
-        $show->is_hidden('Is hidden');
-        $show->category_id('Category id');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
+        $show->title('标题');
+        $show->picture('图片')->image();
+        $show->body('内容');
+        $show->order('排序');
+        $show->is_hidden('是否隐藏');
+        $show->category()->name('所属分类');
+        $show->created_at('创建时间');
+        $show->updated_at('更新时间');
 
         return $show;
     }
@@ -126,12 +128,17 @@ class ArticleController extends Controller
     {
         $form = new Form(new Article);
 
-        $form->text('title', 'Title');
-        $form->image('picture', 'Picture');
-        $form->textarea('body', 'Body');
-        $form->number('order', 'Order');
-        $form->text('is_hidden', 'Is hidden')->default('H');
-        $form->number('category_id', 'Category id');
+        $form->text('title', '标题');
+        $form->image('picture', '图片');
+        $form->textarea('body', '内容');
+        $form->text('order', '排序')->default(0);
+        $form->select('is_hidden', '是否隐藏')->options([
+            'H' => '隐藏',
+            'K' => '开启'
+        ])->default('K');
+        $form->select('category_id', '所属分类')->options(Category::getSelectOptions())->rules('required',[
+            'required' => '分类必填',
+        ]);
 
         return $form;
     }

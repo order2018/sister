@@ -14,4 +14,9 @@ class Article extends Model
         'is_hidden',
         'category_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
