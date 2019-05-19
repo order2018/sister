@@ -18,4 +18,6 @@ Route::group([
 
     $router->resource('articles', ArticleController::class);
 
+    $router->get('orders','OrderController@index');
+
 });
