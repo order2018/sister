@@ -86,6 +86,11 @@ class ArticleController extends Controller
         $grid->title('标题');
         $grid->order('排序');
         $grid->category()->name('类别');
+        $grid->is_pay('是否付费')->display(function ($pay){
+            if ($pay)
+                return '未支付';
+            return '已支付';
+        });
         $grid->is_hidden('是否隐藏')->display(function ($hidden){
             if ($hidden=='K')
                 return '开启';

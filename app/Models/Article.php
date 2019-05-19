@@ -12,6 +12,7 @@ class Article extends Model
         'body',
         'order',
         'is_hidden',
+        'is_pay',
         'category_id',
     ];
 
