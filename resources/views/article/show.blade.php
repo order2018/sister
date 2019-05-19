@@ -23,7 +23,12 @@
                 <h2>专辑</h2>
                 <p>{{ $article->body }}</p>
                 <h3>视频</h3>
+                @if($hidden)
                 <p>{{ $article->body }}</p>
+                @else
+                <p>点击付费查看更多...</p>
+                <p><button type="button" class="btn btn-info">去支付</button></p>
+                @endif
 
             </div>
         </div>
