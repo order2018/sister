@@ -27,7 +27,7 @@
                 <p>{{ $article->body }}</p>
                 @else
                 <p>点击付费查看更多...</p>
-                <p><button type="button" class="btn btn-info">去支付</button></p>
+                <p><button type="button" class="btn btn-info" onclick="window.location.href='/pay?article_id='+'{{$article->id}}';">去支付</button></p>
                 @endif
 
             </div>

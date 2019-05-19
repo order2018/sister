@@ -92,4 +92,9 @@ class ArticleController extends Controller
     {
         //
     }
+
+    public function pay(Request $request)
+    {
+        dd($request->user()->id);
+    }
 }
