@@ -80,7 +80,8 @@ class OrderController extends Controller
     protected function grid()
     {
         $grid = new Grid(new Order);
-        $grid->id('ID');
+        $grid->disableCreateButton();
+        $grid->id('ID')->sortable();
         $grid->name('名称');
         $grid->no('流水号');
         $grid->money('金额');
@@ -89,6 +90,13 @@ class OrderController extends Controller
         $grid->article_id('资讯名称');
         $grid->created_at('创建时间');
         $grid->updated_at('更新时间');
+
+
+        $grid->filter(function ($filter) {
+            $filter->disableIdFilter();
+            $filter->like('no', '流水号');
+            $filter->like('name', '名称');
+        });
 
         return $grid;
     }

@@ -85,6 +85,7 @@ class ArticleController extends Controller
         $grid->id('序号')->sortable();
         $grid->title('标题');
         $grid->order('排序');
+        $grid->money('金额');
         $grid->category()->name('类别');
         $grid->is_hidden('是否隐藏')->display(function ($hidden){
             if ($hidden=='K')
@@ -110,6 +111,7 @@ class ArticleController extends Controller
         $show->title('标题');
         $show->picture('图片')->image();
         $show->body('内容');
+        $show->money('金额');
         $show->order('排序');
         $show->is_hidden('是否隐藏');
         $show->category()->name('所属分类');
@@ -131,6 +133,7 @@ class ArticleController extends Controller
         $form->text('title', '标题');
         $form->image('picture', '图片');
         $form->textarea('body', '内容');
+        $form->text('money', '金额')->default('0.00');
         $form->text('order', '排序')->default(0);
         $form->select('is_hidden', '是否隐藏')->options([
             'H' => '隐藏',
