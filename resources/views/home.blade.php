@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card-deck">
         @foreach($article as $articles)
-        <div class="card">
+        <div class="card" onclick="window.location.href='article/'+'{{$articles->id}}';">
             <img class="card-img-top" src="{{ asset('uploads/'.$articles->picture) }}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{ $articles->title }}</h5>

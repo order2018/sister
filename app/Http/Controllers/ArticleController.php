@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     /**
+     * ArticleController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -46,7 +54,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('article.show');
     }
 
     /**
